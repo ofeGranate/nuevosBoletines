@@ -1,0 +1,10 @@
+COLORES
+=======
+Degradado (de Rosa #C6456E
+ a Morado #642B73)
+Negro #999
+Gris #f5f5f5
+Enlaces #d500f9
+Morado tabla #f3e5f5
+Amarillo estrellas #ffc400
+Morado bordes #C6426E

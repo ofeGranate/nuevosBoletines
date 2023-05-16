@@ -1,0 +1,219 @@
+/*
+Rosa #C6456E degradado1
+Morado #642B73 a degradado2
+Negro #999
+Gris #f5f5f5
+Enlaces #d500f9
+Morado tabla #f3e5f5
+Amarillo estrellas #ffc400
+Morado bordes #C6426E
+*/
+/* ETIQUETAS */
+html{
+  font-family: 'Nunito', sans-serif;
+}
+
+a{
+  text-decoration: none; /* esto quita el subrayado en el enlace */
+  color:#d500f9;
+}
+
+a:hover{
+  opacity: 0.6;
+}
+
+img{
+  max-width: 100%;
+  /* esto hace que la imagen no se salga del contenedor*/
+}
+
+/* td{
+  border:solid 1px;
+} */
+
+
+/* CLASES */
+
+.container{
+  background: #642873; /* Color de respaldo: Morado */
+  background: -webkit-linear-gradient(to right, #C6426E, #642873);
+  background: linear-gradient(to right, #C6426E, #642873);
+  height: 100vh; /* % hace referencia al % del padre, en este caso BODY*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content{
+  max-width: 960px;
+  /* max-height: 500px; ya no hace falta porque se define en media para monitor */
+  width: 100%;
+  /* height: 100%; vamos a usar 80vh para mobile first y ver el degradado */
+  height: 80vh; /* 80% del viewport*/
+  background-color: #fff; /* blanco*/
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  /* hay dos sombras negras, una a continuación de la otra (el ultimo número del rgba es la transparencia del color) */
+  /* box-shadow: diferenciaHorizontal diferenciaVertical desenfoque amplitud color; */
+  border-radius: 4px; /* redondea las esquinas*/
+  position: relative; /* esto hace que el elemento .content sea posicionado y así
+   la clase actions al ser absolute, tome sus parámetros sobre .content */
+  padding: 0.75em; /*mobile first, esta en @media (max-width) para poder romper la tabla*/
+  overflow: auto;
+   /* con overflow-x: hidden; la página principal no se muestra entera */
+}
+
+/* AJUSTES MOBILE FIRST */
+/*pantalla menos ancha de 900px, el content tendrá menor relleno padding
+pero lo ponemos como principal, y dejamos padding: 1.8em en el media para ordenadores*/
+/* .content{
+  padding: 0.75em;
+}*/
+/* rompiendo la tabla */
+/* transforma filas en columnas que ocupen todo el ancho*/
+td{
+  display: block;
+  /* width: 100%; */
+}
+/* coloreamos y ajustamos el ranking usando la pseudo clase nº-de-su-tipo (primero de los td) */
+td:nth-of-type(1){
+  /* copiando de position */
+  background-color: #C6426E;
+  color: white;
+  /* antiguo padding: 10px; 0.5em para medidas relativas */
+  padding: 0.5em;
+  border-radius: 4px;
+  margin-right: 0.5em;
+  width: 0.75em;
+  font-weight: bold;
+  font-size: 1.25em;
+}
+/* el encabezado ya no hace falta y lo ocultamos */
+th{
+  display:none;
+}
+/* FIN AJUSTES MOBILE FIRST */
+.actions{
+  position: absolute; /* al ser absolute, toma la referencia de su padre posicionado, que es .content */
+  top: 1em;
+  right: 1em;
+}
+
+.close{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  background-color: #642B73;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  color: white;
+  font-weight: 300;
+  cursor: pointer;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title{
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.title-item{
+  /* border-bottom-style: solid;
+  border-width: 2px;
+  border-color: #C6426E; */
+  /* atajo de propiedades bottom style width y color */
+  border-bottom: solid 2px #C6426E;
+  padding-bottom: 1em;
+  font-size: 2em;
+}
+
+.position{
+   background-color: #C6426E;
+   color: white;
+   /* antiguo padding: 10px; */
+   padding: 0.5em;
+   border-radius: 4px;
+   margin-right: 0.5em;
+}
+
+.address{
+  font-weight: bold;
+  color:#642B73;
+  font-size: 1.2em;
+  margin-top: 1em;
+  /* para que sea diseño responsivo, necesitamos que esté en línea y se mantenga por bloques con el resto */
+  display: inline-block;
+}
+
+.main-images{
+  float: left;
+  margin-right: 1em;
+  width: 250px;
+}
+
+/* .fa-map-marker{
+  color: red;
+} */
+
+.paragraph{
+  line-height: 1.8em;
+  font-weight: 300;
+}
+
+.table{
+  width: 100%;
+  border-spacing:0;
+}
+
+.table td, .table th{
+  padding: 1em;
+  text-align: left;
+  }
+
+.table tr:nth-child(even){
+    background-color: #f3e5f5;
+  } /* colorea las filas pares (even) (odd= impares)*/
+
+.fa-star, .fa-star-o{
+  color:#ffc400;
+}
+
+/* MEDIA QUERIES */
+
+/* odenadores (pantallas grandes) */
+
+/* pantalla mas alta de 550px, la altura de content será de 500px */
+@media (min-height:550px){
+
+  .content{
+    height: 500px;
+  }
+
+}
+
+/* NUEVO MEDIA CON MOVILE FIRST */
+@media (min-width:800px){
+  /* el content pierde los scroll y tiene padding mayor*/
+  .content{
+    padding:1.8em;
+    overflow:auto;
+  }
+  /* los encabezados th, recuperan el formato tabla*/
+  th{
+    display: table-cell;
+  }
+  /* las celdas vuelven al formato tabla y ancho de celda automatico*/
+  td{
+    width: auto;
+    display: table-cell;
+  }
+  /* el primero de los td, el de posicion recupera
+  tamaño, ancho y color de fuente */
+  td:nth-of-type(1){
+    font-size: 1em;
+    color: #642B73;
+    background-color: transparent;
+    width: auto;
+  }
+}
